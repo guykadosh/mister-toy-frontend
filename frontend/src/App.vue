@@ -14,7 +14,7 @@ export default {
   },
   methods: {},
   components: {
-    // appHeader,
+    appHeader,
   },
 }
 </script>
