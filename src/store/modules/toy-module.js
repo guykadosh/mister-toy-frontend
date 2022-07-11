@@ -31,10 +31,11 @@ export default {
     },
   },
   actions: {
-    loadToys({ commit }, { filterBy }) {
+    loadToys({ commit }, { filterBy, sortBy }) {
       if (!filterBy) filterBy = { txt: '', status: '', labels: null }
-      console.log(filterBy)
-      toyService.query(filterBy).then(toys => {
+      if (!sortBy) sortBy = {}
+
+      toyService.query(filterBy, sortBy).then(toys => {
         commit({ type: 'setToys', toys })
         const labels = toyService.getLabels()
         commit({ type: 'setLabels', labels })

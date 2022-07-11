@@ -18,6 +18,13 @@
         {{ label }}
       </option>
     </select>
+
+    <div class="sort">
+      <p>Sort by</p>
+      <a @click="setSort('name')">name</a>
+      <a @click="setSort('price')">price</a>
+      <a @click="setSort('date')">date</a>
+    </div>
   </section>
 </template>
 
@@ -44,6 +51,8 @@ export default {
           title: 'Not in stock',
         },
       ],
+      sortBy: {},
+      desc: -1,
     }
   },
   methods: {
@@ -55,6 +64,13 @@ export default {
     },
     setFilterStatus() {
       this.$emit('filteredStatus', this.status)
+    },
+    setSort(by) {
+      this.sortBy = {}
+      this.desc *= -1
+      this.sortBy[by] = this.desc
+      const sortBy = JSON.parse(JSON.stringify(this.sortBy))
+      this.$emit('sorted', sortBy)
     },
   },
   computed: {

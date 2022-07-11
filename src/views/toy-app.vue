@@ -4,6 +4,7 @@
     @filteredTxt="debounceHandler"
     @filteredStatus="setFilterByStatus"
     @filteredLabel="setFilterByLabel"
+    @sorted="setSortBy"
   />
   <toy-list :toys="toys" @removeToy="removeToy" />
 </template>
@@ -24,6 +25,7 @@ export default {
         status: '',
         labels: null,
       },
+      sortBy: {},
     }
   },
   created() {
@@ -33,21 +35,26 @@ export default {
     removeToy(toyId) {
       this.$store.dispatch({ type: 'removeToy', id: toyId })
     },
-    filterToys() {
+    loadToys() {
       const filterBy = JSON.parse(JSON.stringify(this.filterBy))
-      this.$store.dispatch({ type: 'loadToys', filterBy })
+      const sortBy = JSON.parse(JSON.stringify(this.sortBy))
+      this.$store.dispatch({ type: 'loadToys', filterBy, sortBy })
     },
     setFilterByTxt(txt) {
       this.filterBy.txt = txt
-      this.filterToys()
+      this.loadToys()
     },
     setFilterByStatus(status) {
       this.filterBy.status = status
-      this.filterToys()
+      this.loadToys()
     },
     setFilterByLabel(labels) {
       this.filterBy.labels = labels
-      this.filterToys()
+      this.loadToys()
+    },
+    setSortBy(sortBy) {
+      this.sortBy = sortBy
+      this.loadToys()
     },
   },
   computed: {

@@ -24,7 +24,7 @@ export const toyService = {
   getLabels,
 }
 
-function query({ txt, status, labels }) {
+function query({ txt, status, labels }, { name, price, date }) {
   return storageService.query(KEY).then(toys => {
     let filteredToys = toys
 
@@ -43,6 +43,18 @@ function query({ txt, status, labels }) {
       filteredToys = filteredToys.filter(toy => {
         return labels.every(label => toy.labels.includes(label))
       })
+    }
+
+    if (name) {
+      filteredToys.sort((t1, t2) => t1.name.localeCompare(t2.name) * name)
+    }
+
+    if (price) {
+      filteredToys.sort((t1, t2) => (t1.price - t2.price) * price)
+    }
+
+    if (date) {
+      filteredToys.sort((t1, t2) => (t1.createdAt - t2.createdAt) * date)
     }
 
     return filteredToys

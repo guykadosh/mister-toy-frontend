@@ -22,9 +22,9 @@
   border-radius: 5px;
 }
 
-.custom-card header {
-  /* font-size: 2rem; */
-}
+/* .custom-card header {
+  font-size: 2rem;
+} */
 
 .custom-card main {
   text-align: center;
