@@ -28,6 +28,7 @@ function query() {
 }
 
 function getById(toyId) {
+  console.log(toyId)
   return storageService.get(KEY, toyId)
 }
 

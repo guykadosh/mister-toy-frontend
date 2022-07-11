@@ -13,7 +13,7 @@
       <template #footer>
         <button @click="goToEdit">edit</button>
         <button @click="goToDetail">details</button>
-        <button @click="removeToy(toy.id)">delete</button>
+        <button @click="removeToy(toy._id)">delete</button>
       </template>
     </custom-card>
   </li>
@@ -32,12 +32,12 @@ export default {
   },
   methods: {
     goToDetail() {
-      this.$router.push(`/toy/${this.toy.id}`)
+      this.$router.push(`/toy/${this.toy._id}`)
     },
     goToEdit() {
-      this.$router.push(`/toy/edit/${this.toy.id}`)
+      this.$router.push(`/toy/edit/${this.toy._id}`)
     },
-    removeCar(toyId) {
+    removeToy(toyId) {
       this.$emit('removeToy', toyId)
     },
   },

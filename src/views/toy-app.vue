@@ -1,8 +1,7 @@
 <template>
   <section class="toy-app"></section>
   <!-- filter -->
-  <!-- list -->
-  <toy-list :toys="toys" />
+  <toy-list :toys="toys" @removeToy="removeToy" />
 </template>
 <script>
 import toyList from '../components/toy-list.vue'
@@ -16,9 +15,12 @@ export default {
       toys: null,
     }
   },
-  created() {
+  created() {},
+  methods: {
+    removeToy(toyId) {
+      this.$store.dispatch({ type: 'removeToy', id: toyId })
+    },
   },
-  methods: {},
   computed: {
     toys() {
       return this.$store.getters.toys
