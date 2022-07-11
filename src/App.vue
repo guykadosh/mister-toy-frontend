@@ -10,7 +10,7 @@ import appHeader from './components/app-header.vue'
 export default {
   name: 'app',
   created() {
-    // this.$store.dispatch({ type: 'loadCars' })
+    this.$store.dispatch({ type: 'loadToys' })
   },
   methods: {},
   components: {

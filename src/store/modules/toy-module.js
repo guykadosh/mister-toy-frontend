@@ -1,8 +1,15 @@
+import { toyService } from '@/services/toy-service.js'
+
 export default {
   state: {
     toys: null,
   },
-  getters: {},
+  getters: {
+    toys({ toys }) {
+      console.log(toys)
+      return toys
+    },
+  },
   mutations: {
     setToys(state, { toys }) {
       state.toys = toys

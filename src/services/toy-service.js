@@ -55,7 +55,7 @@ function _createToys() {
   if (!toys || !toys.length) {
     toys = [
       _createToy('Superman', utilService.getRandomIntInc(20, 100)),
-      _createToy('Batman', utilService.getRandomIntInc(20, 100)),
+      _createToy('Batman', utilService.getRandomIntInc(20, 150)),
       _createToy('Ironman', utilService.getRandomIntInc(20, 100)),
     ]
     utilService.saveToStorage(KEY, toys)
@@ -66,8 +66,8 @@ function _createToys() {
 function _createToy(name, price) {
   return {
     _id: utilService.makeId(),
-    name: 'Talking Doll',
-    price: 123,
+    name,
+    price,
     labels: ['Doll', 'Battery Powered', 'Baby'],
     createdAt: Date.now(),
     inStock: true,
