@@ -3,16 +3,22 @@ import { toyService } from '@/services/toy-service.js'
 export default {
   state: {
     toys: null,
+    labels: null,
   },
   getters: {
     toys({ toys }) {
-      console.log(toys)
       return toys
+    },
+    labels({ labels }) {
+      return labels
     },
   },
   mutations: {
     setToys(state, { toys }) {
       state.toys = toys
+    },
+    setLabels(state, { labels }) {
+      state.labels = labels
     },
     removeToy(state, { id }) {
       const idx = state.toys.findIndex(toy => toy._id === id)
@@ -25,9 +31,13 @@ export default {
     },
   },
   actions: {
-    loadToys({ commit }) {
-      toyService.query().then(toys => {
+    loadToys({ commit }, { filterBy }) {
+      if (!filterBy) filterBy = { txt: '', status: '', labels: null }
+      console.log(filterBy)
+      toyService.query(filterBy).then(toys => {
         commit({ type: 'setToys', toys })
+        const labels = toyService.getLabels()
+        commit({ type: 'setLabels', labels })
       })
     },
     removeToy({ commit }, { id }) {

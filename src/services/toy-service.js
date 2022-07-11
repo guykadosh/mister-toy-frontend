@@ -21,14 +21,35 @@ export const toyService = {
   remove,
   save,
   getEmptyToy,
+  getLabels,
 }
 
-function query() {
-  return storageService.query(KEY)
+function query({ txt, status, labels }) {
+  return storageService.query(KEY).then(toys => {
+    let filteredToys = toys
+
+    const regex = new RegExp(txt, 'i')
+    filteredToys = filteredToys.filter(toy => regex.test(toy.name))
+
+    if (status) {
+      filteredToys = filteredToys.filter(
+        toy =>
+          (toy.inStock && status === 'stock') ||
+          (!toy.inStock && status === 'missing')
+      )
+    }
+
+    if (labels) {
+      filteredToys = filteredToys.filter(toy => {
+        return labels.every(label => toy.labels.includes(label))
+      })
+    }
+
+    return filteredToys
+  })
 }
 
 function getById(toyId) {
-  console.log(toyId)
   return storageService.get(KEY, toyId)
 }
 
@@ -47,8 +68,12 @@ function getEmptyToy() {
     price: 0,
     labels: ['Doll', 'Battery Powered', 'Baby'],
     createdAt: Date.now(),
-    inStock: true,
+    inStock: false,
   }
+}
+
+function getLabels() {
+  return labels
 }
 
 function _createToys() {
