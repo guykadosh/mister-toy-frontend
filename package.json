@@ -8,6 +8,7 @@
     "test:unit": "vitest --environment jsdom"
   },
   "dependencies": {
+    "axios": "^0.27.2",
     "lodash": "^4.17.21",
     "vue": "^3.2.37",
     "vue-router": "^4.0.16",

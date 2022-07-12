@@ -1,5 +1,6 @@
-import { storageService } from './storage-service.js'
+// import { storageService } from './storage-service.js'
 import { utilService } from './util-service.js'
+import axios from 'axios'
 
 const KEY = 'toys_db'
 
@@ -24,54 +25,33 @@ export const toyService = {
   getLabels,
 }
 
-function query({ txt, status, labels }, { name, price, date }) {
-  return storageService.query(KEY).then(toys => {
-    let filteredToys = toys
+function _getUrl(id = '') {
+  const BASE_URL =
+    process.env.NODE_ENV !== 'development'
+      ? '/api/toy'
+      : '//localhost:3030/api/toy'
 
-    const regex = new RegExp(txt, 'i')
-    filteredToys = filteredToys.filter(toy => regex.test(toy.name))
+  return `${BASE_URL}/${id}`
+}
 
-    if (status) {
-      filteredToys = filteredToys.filter(
-        toy =>
-          (toy.inStock && status === 'stock') ||
-          (!toy.inStock && status === 'missing')
-      )
-    }
-
-    if (labels) {
-      filteredToys = filteredToys.filter(toy => {
-        return labels.every(label => toy.labels.includes(label))
-      })
-    }
-
-    if (name) {
-      filteredToys.sort((t1, t2) => t1.name.localeCompare(t2.name) * name)
-    }
-
-    if (price) {
-      filteredToys.sort((t1, t2) => (t1.price - t2.price) * price)
-    }
-
-    if (date) {
-      filteredToys.sort((t1, t2) => (t1.createdAt - t2.createdAt) * date)
-    }
-
-    return filteredToys
-  })
+function query(filterBy, sortBy) {
+  const query = { filterBy, sortBy }
+  return axios.get(_getUrl(), { params: query }).then(res => res.data)
 }
 
 function getById(toyId) {
-  return storageService.get(KEY, toyId)
+  return axios.get(_getUrl(toyId)).then(res => res.data)
 }
 
 function remove(toyId) {
-  return storageService.remove(KEY, toyId)
+  return axios.delete(_getUrl(toyId))
 }
 
 function save(toy) {
-  if (toy._id) return storageService.put(KEY, toy)
-  return storageService.post(KEY, toy)
+  if (toy._id) {
+    return axios.put(_getUrl(toy._id), toy).then(res => res.data)
+  }
+  return axios.post(_getUrl(), toy).then(res => res.data)
 }
 
 function getEmptyToy() {

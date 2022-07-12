@@ -1,4 +1,5 @@
 <template>
+  <h1>Hi?</h1>
   <section v-if="toy" class="toy-details flex flex-col items-center gap-2">
     <article>
       <p><span>ID:</span> {{ toy._id }}</p>
@@ -13,13 +14,14 @@
 import { toyService } from '../services/toy-service.js'
 
 export default {
-  name: 'toy-detail',
+  name: 'toy-details',
   data() {
     return {
       toy: null,
     }
   },
   created() {
+    console.log('why like tihs?')
     const { toyId } = this.$route.params
     console.log(toyId)
     toyService.getById(toyId).then(toy => {
