@@ -1,24 +1,42 @@
 <template>
   <section class="toy-filter">
-    <input
+    <el-input
       v-focus
       v-model="txt"
       @input="setFilterTxt"
-      type="text"
+      class="w-50 m-2"
       placeholder="Search toy..."
+      :prefix-icon="search"
     />
 
-    <select v-model="status" @change="setFilterStatus">
-      <option v-for="status in statuses" :value="status.value">
-        {{ status.title }}
-      </option>
-    </select>
+    <el-select
+      v-model="status"
+      @change="setFilterStatus"
+      class="m-2"
+      placeholder="All"
+    >
+      <el-option
+        v-for="status in statuses"
+        :key="status.title"
+        :label="status.title"
+        :value="status.value"
+      />
+    </el-select>
 
-    <select v-model="selectedLabels" @change="setFilterLabel" multiple>
-      <option v-for="label in labels" :value="label">
-        {{ label }}
-      </option>
-    </select>
+    <el-select
+      v-model="selectedLabels"
+      @change="setFilterLabel"
+      multiple
+      placeholder="Pick types"
+      style="width: 240px"
+    >
+      <el-option
+        v-for="label in labels"
+        :key="label"
+        :label="label"
+        :value="label"
+      />
+    </el-select>
 
     <div class="sort">
       <p>Sort by</p>
@@ -30,6 +48,8 @@
 </template>
 
 <script>
+import { Search } from '@element-plus/icons-vue'
+
 export default {
   name: 'toy-filter',
   data() {
@@ -78,6 +98,15 @@ export default {
     labels() {
       return this.$store.getters.labels
     },
+    search() {
+      return Search
+    },
   },
 }
 </script>
+
+<style>
+.w-50 {
+  width: 150px;
+}
+</style>
