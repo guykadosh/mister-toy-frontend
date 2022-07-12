@@ -1,6 +1,7 @@
 <template>
   <section class="toy-filter">
     <input
+      v-focus
       v-model="txt"
       @input="setFilterTxt"
       type="text"

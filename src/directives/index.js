@@ -1,5 +1,5 @@
 export const focusDirective = {
-  mounted: (el) => {
+  mounted: el => {
     el.focus()
   },
 }
@@ -14,24 +14,17 @@ export const rainbowDirective = {
   },
 }
 
-export const customOnDirective = {
-  mounted(el, binding) {
-    console.log('binding', binding)
-    const type = binding.arg
-    const fn = binding.value
-    el.addEventListener(type, fn)
-  },
-}
-
 export const clickOutsideDirective = {
   mounted(el, { value: cb }) {
     el.clickOutside = ({ clientX, clientY }) => {
       const { left, top, width, height } = el.getBoundingClientRect()
       if (
-        !(clientX > left &&
+        !(
+          clientX > left &&
           clientX < left + width &&
           clientY > top &&
-          clientY < top + height)
+          clientY < top + height
+        )
       ) {
         cb()
         console.log('outside')
@@ -58,8 +51,6 @@ export const close = {
     }
   },
 }
-
-
 
 function _isDarkColor(c) {
   c = c.substring(1) // strip #
