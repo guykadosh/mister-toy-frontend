@@ -8,6 +8,7 @@
     "test:unit": "vitest --environment jsdom"
   },
   "dependencies": {
+    "@fawmi/vue-google-maps": "^0.9.72",
     "axios": "^0.27.2",
     "chart.js": "^3.8.0",
     "element-plus": "^2.2.9",

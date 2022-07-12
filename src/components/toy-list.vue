@@ -14,7 +14,7 @@ export default {
   name: 'toy-list',
   props: {
     toys: {
-      type: Array,
+      type: [Array, null],
       required: true,
     },
   },

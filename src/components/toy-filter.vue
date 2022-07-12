@@ -4,7 +4,7 @@
       v-focus
       v-model="txt"
       @input="setFilterTxt"
-      class="w-50 m-2"
+      class="w-150"
       placeholder="Search toy..."
       :prefix-icon="search"
     />
@@ -106,7 +106,7 @@ export default {
 </script>
 
 <style>
-.w-50 {
+.w-150 {
   width: 150px;
 }
 </style>
