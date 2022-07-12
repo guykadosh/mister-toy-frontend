@@ -9,7 +9,7 @@ import { Chart, registerables } from 'chart.js'
 Chart.register(...registerables)
 
 export default {
-  name: 'Home',
+  name: 'chart',
   props: {
     data: Object,
   },

@@ -24,7 +24,6 @@ export default {
       return this.$store.getters.labels
     },
     pricesData() {
-      console.log(this.labels)
       const data = this.labels.map(label => {
         const filteredToys = this.toys.filter(toy => toy.labels.includes(label))
         return filteredToys.reduce(
@@ -51,7 +50,8 @@ export default {
     stockData() {
       const data = this.labels.map(label => {
         return this.toys.reduce(
-          (acc, toy) => (toy.labels.includes(label) ? acc + 1 : acc),
+          (acc, toy) =>
+            toy.labels.includes(label) && toy.inStock ? acc + 1 : acc,
           0
         )
       })
