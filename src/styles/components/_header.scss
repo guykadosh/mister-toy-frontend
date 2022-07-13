@@ -1,5 +1,5 @@
 .header {
-  padding: 1rem;
+  padding: 0.5rem;
   background-color: $primary-color;
 
   &__inner {
@@ -8,7 +8,7 @@
   &__logo {
     font-family: Chewy, cursive;
     text-shadow: -3px 0 #fff, 0 3px #fff, 3px 0 #fff, 0 -3px #fff;
-    font-size: rem(64px);
+    font-size: rem(54px);
 
     span {
       &:nth-child(1) {
@@ -16,7 +16,7 @@
       }
       &:nth-child(2) {
         color: $primary-color-light;
-        font-size: rem(92px);
+        font-size: rem(72px);
       }
       &:nth-child(3) {
         color: $third-color;

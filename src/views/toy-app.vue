@@ -6,7 +6,7 @@
       @filteredLabel="setFilterByLabel"
       @sorted="setSortBy"
     />
-    <router-link to="/toy/edit">Add new toy</router-link>
+    <router-link class="btn-dark" to="/toy/edit">Add new toy</router-link>
     <toy-list :toys="toys" @removeToy="removeToy" />
   </section>
 </template>

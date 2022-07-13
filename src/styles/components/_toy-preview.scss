@@ -1,0 +1,67 @@
+.toy-preview {
+  height: 300px;
+  &__side {
+    padding: 0.8rem;
+    border-radius: 6px;
+    &--front {
+      .tag-text {
+        color: $secondary-color;
+      }
+    }
+    &--back {
+      background-color: $primary-color;
+      background-image: linear-gradient($primary-color, $primary-color-light);
+      height: 100%;
+      text-align: center;
+    }
+  }
+
+  &__img {
+    border-radius: 6px;
+    width: 100%;
+    object-fit: contain;
+    margin-block-end: rem(8px);
+  }
+
+  &__label {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.2rem 0.4rem;
+    border-radius: 3px;
+    font-size: rem(14px);
+    margin-inline-end: rem(5px);
+    color: $light-color1;
+  }
+
+  &__price-box {
+    text-align: center;
+    color: $light-color1;
+    margin-bottom: rem(40px);
+    margin-top: rem(60px);
+  }
+
+  &__price-only {
+    font-size: 1rem;
+    text-transform: uppercase;
+  }
+
+  &__price-value {
+    font-size: 4rem;
+    font-weight: 100;
+  }
+
+  &__actions {
+    button {
+      &:nth-child(1) {
+        @include btn($bg: $secondary-color, $padding: em(8px) em(11px));
+      }
+      &:nth-child(2) {
+        @include btn($bg: $third-color, $padding: em(8px) em(11px));
+        margin: 0 rem(5px);
+      }
+      &:nth-child(3) {
+        @include btn($bg: $fifth-color, $padding: em(8px) em(11px));
+      }
+    }
+  }
+}

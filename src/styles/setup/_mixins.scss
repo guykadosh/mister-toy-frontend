@@ -122,7 +122,7 @@
     font-variation-settings: 'wght' 430;
   } @else if $type == boldCondensed {
     font-variation-settings: 'wght' 430, 'wdth' 80;
-    letter-spacing: em(6.72px);
+    letter-spacing: em(1.5px);
   } @else if $type == condensed {
     font-variation-settings: 'wdth' 80;
     letter-spacing: em(6.72px);

@@ -19,6 +19,10 @@ body {
     @include btn($type: dark);
   }
 
+  &-dark-small {
+    @include btn($type: dark, $padding: rem(5px) rem(10px));
+  }
+
   &-light {
     @include btn($type: light);
   }

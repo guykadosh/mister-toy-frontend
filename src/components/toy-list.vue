@@ -1,6 +1,6 @@
 <template>
   <!-- <custom-card2 /> -->
-  <ul class="toy-list clean-list grid gap-1">
+  <ul class="toy-list clean-list grid gap-2 m-2">
     <toy-preview-new
       @removeToy="removeToy"
       v-for="toy in toys"
@@ -10,7 +10,7 @@
   </ul>
 </template>
 <script>
-import toyPreviewNew from './toy-preview-new.vue'
+import toyPreview from './toy-preview.vue'
 
 export default {
   name: 'toy-list',
@@ -21,7 +21,7 @@ export default {
     },
   },
   components: {
-    toyPreviewNew,
+    toyPreview,
   },
   methods: {
     removeToy(toyId) {
@@ -33,6 +33,6 @@ export default {
 
 <style>
 .toy-list {
-  grid-template-columns: repeat(auto-fit, 15rem);
+  grid-template-columns: repeat(auto-fill, 15rem);
 }
 </style>

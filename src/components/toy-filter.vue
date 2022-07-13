@@ -4,7 +4,7 @@
       v-focus
       v-model="txt"
       @input="setFilterTxt"
-      class="w-150"
+      style="width: 250px"
       placeholder="Search toy..."
       :prefix-icon="search"
     />
@@ -39,10 +39,11 @@
     </el-select>
 
     <div class="sort flex justify-between items-center m-2">
-      <p>Sort by</p>
-      <a class="m-1" @click="setSort('name')">name</a>
-      <a class="m-1" @click="setSort('price')">price</a>
-      <a class="m-1" @click="setSort('date')">date</a>
+      <p>Sort:</p>
+      <a class="btn-dark-small m-1" @click="setSort('name')">Name</a>
+      <a class="btn-dark-small m-1" @click="setSort('price')">Price</a>
+      <a class="btn-dark-small m-1" @click="setSort('date')">Date</a>
+      <span>{{ desc === -1 ? '↓' : '↑' }}</span>
     </div>
   </section>
 </template>
@@ -104,9 +105,3 @@ export default {
   },
 }
 </script>
-
-<style>
-.w-150 {
-  width: 150px;
-}
-</style>
