@@ -1,51 +1,45 @@
 .nav-bar {
+  width: rem(480px);
   &__links {
-    display: flex;
-    margin: auto;
-    max-width: 1000px;
-    justify-content: space-between;
-    text-align: center;
+    width: 100%;
   }
 
   li {
-    padding: 1rem 2rem 1.15rem;
-    text-transform: uppercase;
-    cursor: pointer;
-    color: #ebebeb;
-    min-width: 80px;
-    margin: auto;
-
-    &:hover {
-      // background-image: url('https://scottyzen.sirv.com/Images/v/button.png');
-      background-color: #fff;
-      background-size: 100% 100%;
-      color: #27262c;
-      animation: spring 300ms ease-out;
-      text-shadow: 0 -1px 0 #ef816c;
-      font-weight: bold;
+    &:nth-child(1) a {
+      @include btn($bg: $secondary-color);
+    }
+    &:nth-child(2) a {
+      @include btn($bg: $third-color);
+    }
+    &:nth-child(3) a {
+      @include btn($bg: #f8cc2d);
+    }
+    &:nth-child(4) a {
+      @include btn($bg: #fa5252);
     }
 
-    &:active {
-      transform: translateY(4px);
+    &:hover {
+      animation: spring 0.3s ease-out;
     }
   }
 }
+// hover animation: spring 0.3s ease-out;
 
 @keyframes spring {
   15% {
-    -webkit-transform-origin: center center;
-    -webkit-transform: scale(1.2, 1.1);
+    transform-origin: center center;
+    transform: scale(1.2, 1.1);
   }
   40% {
-    -webkit-transform-origin: center center;
-    -webkit-transform: scale(0.95, 0.95);
+    transform-origin: center center;
+    transform: scale(0.95, 0.95);
   }
   75% {
-    -webkit-transform-origin: center center;
-    -webkit-transform: scale(1.05, 1);
+    transform-origin: center center;
+    transform: scale(1.05, 1);
   }
   100% {
-    -webkit-transform-origin: center center;
-    -webkit-transform: scale(1, 1);
+    transform-origin: center center;
+    transform: scale(1, 1);
   }
 }

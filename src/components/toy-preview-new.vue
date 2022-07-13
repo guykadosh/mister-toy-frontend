@@ -1,34 +1,35 @@
 <template>
-  <li class="car-preview">
-    <custom-card>
-      <template #header>
-        <p><span>Name:</span> {{ toy.name }}</p>
+  <li class="toy-preview">
+    <custom-card-new>
+      <template #front>
+        <h3>{{ toy.name }}</h3>
+        <img src="@/assets/demo-toy.jpg" alt="" />
         <p><span>Tags</span> {{ toy.labels }}</p>
+      </template>
+
+      <template #back>
         <p>
           <span>Price:</span>
           {{ toy.price }}
         </p>
-      </template>
-
-      <template #footer>
         <button @click="goToEdit">edit</button>
         <button @click="goToDetail">details</button>
         <button @click="removeToy(toy._id)">delete</button>
       </template>
-    </custom-card>
+    </custom-card-new>
   </li>
 </template>
 
 <script>
-import customCard from './custom-card.vue'
+import customCardNew from './custom-card-new.vue'
 
 export default {
-  name: 'toy-preview1',
+  name: 'toy-preview-new',
   props: {
     toy: Object,
   },
   components: {
-    customCard,
+    customCardNew,
   },
   methods: {
     goToDetail() {
@@ -43,3 +44,17 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" scoped>
+li {
+  // width: 250px;
+  height: 300px;
+  padding: 1rem;
+}
+
+img {
+  width: 100%;
+  object-fit: contain;
+  // aspect-ratio: 1.7 /1;
+}
+</style>

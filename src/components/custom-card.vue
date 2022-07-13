@@ -17,9 +17,9 @@
 .custom-card {
   justify-content: space-between;
   background: white;
-  padding: 2em;
-  border: 1px solid black;
-  border-radius: 5px;
+  padding: 1.5em;
+  border: 1px solid rgb(84, 84, 84);
+  border-radius: 6px;
 }
 
 /* .custom-card header {

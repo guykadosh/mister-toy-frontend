@@ -1,13 +1,14 @@
 // SETUP
-@import 'setup/fonts';
+@import 'setup/typography';
+@import 'setup/functions';
+@import 'setup/mixins';
 @import 'setup/variables';
 
 // BASE
-@import 'base/base';
-@import 'base/helpers';
-@import 'base/spacing';
-
-// Layout
+@import 'basic/base';
+@import 'basic/helpers';
+@import 'basic/spacing';
+@import 'basic/layout';
 
 // Components
 @import 'components/header';

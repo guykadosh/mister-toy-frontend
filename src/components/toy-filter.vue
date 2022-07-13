@@ -1,5 +1,5 @@
 <template>
-  <section class="toy-filter">
+  <section class="toy-filter flex items-center">
     <el-input
       v-focus
       v-model="txt"
@@ -38,11 +38,11 @@
       />
     </el-select>
 
-    <div class="sort">
+    <div class="sort flex justify-between items-center m-2">
       <p>Sort by</p>
-      <a @click="setSort('name')">name</a>
-      <a @click="setSort('price')">price</a>
-      <a @click="setSort('date')">date</a>
+      <a class="m-1" @click="setSort('name')">name</a>
+      <a class="m-1" @click="setSort('price')">price</a>
+      <a class="m-1" @click="setSort('date')">date</a>
     </div>
   </section>
 </template>

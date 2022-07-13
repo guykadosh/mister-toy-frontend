@@ -1,0 +1,25 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: Roboto-Regular, sans-serif;
+}
+
+body {
+  background-color: $light-color1;
+}
+
+.btn {
+  @include btn;
+
+  &-dark {
+    @include btn($type: dark);
+  }
+
+  &-light {
+    @include btn($type: light);
+  }
+}

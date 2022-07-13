@@ -1,12 +1,26 @@
 .header {
   padding: 1rem;
-  background-color: #4263eb;
+  background-color: $primary-color;
 
   &__inner {
-    position: relative;
   }
 
-  &__logo-img {
-    width: 15rem;
+  &__logo {
+    font-family: Chewy, cursive;
+    text-shadow: -3px 0 #fff, 0 3px #fff, 3px 0 #fff, 0 -3px #fff;
+    font-size: rem(64px);
+
+    span {
+      &:nth-child(1) {
+        color: $secondary-color;
+      }
+      &:nth-child(2) {
+        color: $primary-color-light;
+        font-size: rem(92px);
+      }
+      &:nth-child(3) {
+        color: $third-color;
+      }
+    }
   }
 }

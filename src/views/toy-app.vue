@@ -1,13 +1,14 @@
 <template>
-  <section class="toy-app"></section>
-  <toy-filter
-    @filteredTxt="debounceHandler"
-    @filteredStatus="setFilterByStatus"
-    @filteredLabel="setFilterByLabel"
-    @sorted="setSortBy"
-  />
-  <router-link to="/toy/edit">Add new toy</router-link>
-  <toy-list :toys="toys" @removeToy="removeToy" />
+  <section class="toy-app">
+    <toy-filter
+      @filteredTxt="debounceHandler"
+      @filteredStatus="setFilterByStatus"
+      @filteredLabel="setFilterByLabel"
+      @sorted="setSortBy"
+    />
+    <router-link to="/toy/edit">Add new toy</router-link>
+    <toy-list :toys="toys" @removeToy="removeToy" />
+  </section>
 </template>
 <script>
 import _ from 'lodash'
