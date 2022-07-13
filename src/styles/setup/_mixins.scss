@@ -41,7 +41,7 @@
     content: '';
     display: block;
     width: 100%;
-    padding-top: ($height / $width) * 100%;
+    padding-top: calc($height / $width) * 100%;
   }
   > * {
     position: absolute;
@@ -63,6 +63,14 @@
       @content;
     }
   }
+}
+// Label{
+
+@mixin label {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 3px;
+  color: $light-color1;
 }
 
 // Buttons

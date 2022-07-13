@@ -1,0 +1,29 @@
+.toy-details {
+  margin-top: rem(64px);
+  background-color: $third-color;
+  padding: rem(20px);
+  border-radius: 6px;
+  color: $light-color1;
+  font-size: rem(20px);
+
+  &__title {
+    font-size: rem(40px);
+  }
+
+  &__details {
+    grid-template-rows: auto 1fr auto;
+    width: 100%;
+  }
+
+  &__img {
+    width: rem(450px);
+    border-radius: 6px;
+  }
+
+  &__label {
+    @include label;
+    margin-inline-end: rem(8px);
+    padding: rem(8px) rem(10px);
+    font-weight: 500;
+  }
+}

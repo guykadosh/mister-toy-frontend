@@ -24,7 +24,7 @@ const KEY = 'toys_db'
 
 const labels = [
   { title: 'On wheels', color: '#dc2626' },
-  { title: 'Board game', color: '#f59e0b' },
+  { title: 'Board', color: '#f59e0b' },
   { title: 'Art', color: '#047857' },
   { title: 'Baby', color: '#2563eb' },
   { title: 'Puzzle', color: '#4338ca' },

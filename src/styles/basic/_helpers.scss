@@ -11,11 +11,17 @@
 .align-self-center {
   align-self: center;
 }
+.self-end {
+  align-self: flex-end;
+}
 .flex.items-center {
   align-items: center;
 }
 .flex.justify-center {
   justify-content: center;
+}
+.flex.justify-end {
+  justify-content: flex-end;
 }
 .flex.justify-between {
   justify-content: space-between;

@@ -26,13 +26,10 @@
   }
 
   &__label {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.2rem 0.4rem;
-    border-radius: 3px;
-    font-size: rem(14px);
+    @include label;
     margin-inline-end: rem(5px);
-    color: $light-color1;
+    padding: 0.2rem 0.4rem;
+    font-size: rem(14px);
   }
 
   &__price-box {
