@@ -4,14 +4,37 @@ import axios from 'axios'
 
 const KEY = 'toys_db'
 
+// const labels = [
+//   'On wheels',
+//   'Box game',
+//   'Art',
+//   'Baby',
+//   'Doll',
+//   'Puzzle',
+//   'Outdoor',
+// ]
+
+// '#dc2626',
+// '#f59e0b',
+// '#047857',
+// '#2563eb',
+// '#4338ca',
+// '#be185d',
+// '#71717a',
+
 const labels = [
-  'On wheels',
-  'Box game',
-  'Art',
-  'Baby',
-  'Doll',
-  'Puzzle',
-  'Outdoor',
+  { title: 'On wheels', color: '#dc2626' },
+  { title: 'Board game', color: '#f59e0b' },
+  { title: 'Art', color: '#047857' },
+  { title: 'Baby', color: '#2563eb' },
+  { title: 'Puzzle', color: '#4338ca' },
+  { title: 'Outdoor', color: '#be185d' },
+  { title: 'Battery Powered', color: '#71717a' },
+  { title: 'Doll', color: '#6d28d9' },
+  { title: 'Anime', color: '#fbbf24' },
+  { title: 'Lego', color: '#6366f1' },
+  { title: 'Superhero', color: '#ef4444' },
+  { title: 'Strategy', color: '#34d399' },
 ]
 
 _createToys()

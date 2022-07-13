@@ -1,0 +1,15 @@
+.home {
+  height: 87vh;
+  background-image: linear-gradient(
+    to right bottom,
+    rgba($primary-color, 0.9),
+    rgba($primary-color-light, 0.6)
+  );
+
+  &__text-box {
+  }
+
+  &__img {
+    width: rem(900px);
+  }
+}

@@ -10,10 +10,13 @@
               class="toy-preview__label"
               v-for="(label, idx) in toy.labels"
               :key="label"
-              :style="{ backgroundColor: colors[idx] }"
+              :style="{ backgroundColor: label.color }"
             >
-              {{ label }}
+              {{ label.title }}
             </span>
+          </div>
+          <div v-if="!toy.inStock" class="ribbon ribbon-top-right">
+            <span>Out of stock</span>
           </div>
         </div>
       </template>
@@ -45,20 +48,10 @@ export default {
     toy: Object,
   },
   components: {
-    customCardNew,
+    customCard,
   },
   data() {
-    return {
-      colors: [
-        '#dc2626',
-        '#f59e0b',
-        '#047857',
-        '#2563eb',
-        '#4338ca',
-        '#be185d',
-        '#71717a',
-      ],
-    }
+    return {}
   },
   methods: {
     goToDetail() {

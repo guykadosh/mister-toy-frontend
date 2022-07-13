@@ -23,26 +23,28 @@ export default {
     labels() {
       return this.$store.getters.labels
     },
+    titles() {
+      return this.labels.map(label => label.title)
+    },
+    color() {
+      return this.labels.map(label => label.color)
+    },
     pricesData() {
       const data = this.labels.map(label => {
-        const filteredToys = this.toys.filter(toy => toy.labels.includes(label))
+        const filteredToys = this.toys.filter(toy =>
+          toy.labels.map(label => label.title).includes(label.title)
+        )
         return filteredToys.reduce(
           (avgPrice, toy) => avgPrice + toy.price / filteredToys.length,
           0
         )
       })
       return {
-        labels: this.labels,
+        labels: this.titles,
         datasets: [
           {
             data,
-            backgroundColor: [
-              '#77CEFF',
-              '#0079AF',
-              '#123E6B',
-              '#97B0C4',
-              '#A5C8ED',
-            ],
+            backgroundColor: this.colors,
           },
         ],
       }
@@ -51,22 +53,19 @@ export default {
       const data = this.labels.map(label => {
         return this.toys.reduce(
           (acc, toy) =>
-            toy.labels.includes(label) && toy.inStock ? acc + 1 : acc,
+            toy.labels.map(label => label.title).includes(label.title) &&
+            toy.inStock
+              ? acc + 1
+              : acc,
           0
         )
       })
       return {
-        labels: this.labels,
+        labels: this.titles,
         datasets: [
           {
             data,
-            backgroundColor: [
-              '#77CEFF',
-              '#0079AF',
-              '#123E6B',
-              '#97B0C4',
-              '#A5C8ED',
-            ],
+            backgroundColor: this.colors,
           },
         ],
       }

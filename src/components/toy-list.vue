@@ -1,7 +1,7 @@
 <template>
   <!-- <custom-card2 /> -->
   <ul class="toy-list clean-list grid gap-2 m-2">
-    <toy-preview-new
+    <toy-preview
       @removeToy="removeToy"
       v-for="toy in toys"
       :toy="toy"

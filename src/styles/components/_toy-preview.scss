@@ -4,6 +4,8 @@
     padding: 0.8rem;
     border-radius: 6px;
     &--front {
+      position: relative;
+
       .tag-text {
         color: $secondary-color;
       }

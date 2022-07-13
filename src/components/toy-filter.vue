@@ -32,9 +32,10 @@
     >
       <el-option
         v-for="label in labels"
-        :key="label"
-        :label="label"
-        :value="label"
+        :key="label.title"
+        :label="label.title"
+        :value="label.title"
+        :style="{ backgroundColor: label.color, color: '#ffffff' }"
       />
     </el-select>
 
