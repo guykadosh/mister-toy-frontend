@@ -1,4 +1,14 @@
 <template>
+  <div class="branch-stores my-2">
+    <h2 class="m-2">Our Stores</h2>
+    <span
+      class="btn mx-1"
+      v-for="marker in markers"
+      :key="marker"
+      @click="center = marker.position"
+      >{{ marker.location }}</span
+    >
+  </div>
   <GMapMap
     :center="center"
     :zoom="11"
@@ -25,23 +35,25 @@ export default {
       markers: [
         {
           position: {
-            lat: 32.088179,
-            lng: 34.790144,
+            lat: 32.07446846,
+            lng: 34.791617341,
           },
-          title: 'Tel-aviv store',
+          location: 'Tel-aviv',
         },
         {
           position: {
-            lat: 32.066278,
-            lng: 34.830301,
+            lat: 29.549795,
+            lng: 34.95463,
           },
+          location: 'Eilat',
         },
         {
           position: {
-            lat: 32.093869,
-            lng: 34.882401,
+            lat: 32.65971,
+            lng: 35.10516,
           },
-        }, // Along list of clusters
+          location: "Yokne'am",
+        },
       ],
     }
   },

@@ -26,7 +26,7 @@ export default {
     titles() {
       return this.labels.map(label => label.title)
     },
-    color() {
+    colors() {
       return this.labels.map(label => label.color)
     },
     pricesData() {
@@ -39,10 +39,13 @@ export default {
           0
         )
       })
+
       return {
         labels: this.titles,
         datasets: [
           {
+            label: 'Price Avg',
+            borderRadius: 6,
             data,
             backgroundColor: this.colors,
           },
@@ -64,6 +67,8 @@ export default {
         labels: this.titles,
         datasets: [
           {
+            label: 'Stock Data',
+            borderRadius: 6,
             data,
             backgroundColor: this.colors,
           },
