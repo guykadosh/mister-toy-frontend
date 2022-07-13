@@ -1,0 +1,27 @@
+.toy-edit {
+  color: $light-color3;
+  justify-content: center;
+  align-items: center;
+  margin-top: rem(64px);
+
+  &__form {
+    width: 70%;
+    border-radius: 6px;
+    padding: rem(20px);
+    gap: rem(20px);
+    background-color: $secondary-color-light;
+  }
+
+  &__input-box {
+    width: rem(300px);
+
+    label {
+      display: inline-block;
+      margin-block-end: rem(10px);
+    }
+  }
+
+  .btn {
+    margin-inline-end: rem(15px);
+  }
+}

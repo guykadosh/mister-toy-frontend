@@ -81,7 +81,7 @@ function getEmptyToy() {
   return {
     name: '',
     price: 0,
-    labels: ['Doll', 'Battery Powered', 'Baby'],
+    labels: [],
     createdAt: Date.now(),
     inStock: false,
   }
@@ -109,7 +109,11 @@ function _createToy(name, price) {
     _id: utilService.makeId(),
     name,
     price,
-    labels: ['Doll', 'Battery Powered', 'Baby'],
+    labels: [
+      { title: 'Doll', color: '#6d28d9' },
+      { title: 'Battery Powered', color: '#71717a' },
+      { title: 'Baby', color: '#2563eb' },
+    ],
     createdAt: Date.now(),
     inStock: true,
   }
