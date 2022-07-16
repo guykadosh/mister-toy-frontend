@@ -1,15 +1,86 @@
 .home {
   height: 87vh;
-  background-image: linear-gradient(
-    to right bottom,
-    rgba($primary-color, 0.9),
-    rgba($primary-color-light, 0.6)
-  );
+  align-items: center;
 
   &__text-box {
+    display: flex;
+    width: 100%;
+    // justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    h1 {
+      font-size: rem(48px);
+      font-family: Roboto-bold, sans-serif;
+      margin-block-end: rem(64px);
+    }
+  }
+
+  &__logo {
+    font-family: Chewy, cursive;
+
+    span {
+      &:nth-child(1) {
+        color: $secondary-color;
+      }
+      &:nth-child(2) {
+        color: $primary-color-light;
+        font-size: rem(54px);
+      }
+      &:nth-child(3) {
+        color: $third-color;
+      }
+    }
   }
 
   &__img {
-    width: rem(900px);
+    width: rem(750px);
+  }
+
+  &__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+    text-decoration: none;
+    width: rem(125px);
+    height: rem(125px);
+    border-radius: 100px;
+    border: none;
+    background: $light-color1;
+    color: $primary-color-dark;
+    font-weight: 700;
+    font-family: Roboto-bold, sans-serif;
+    box-shadow: inset 20px 20px 39px #ffffff, inset -20px -20px 39px #ffffff;
+    font-size: rem(24px);
+
+    &::after {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      left: -10px;
+      top: -10px;
+      border-radius: 50%;
+      width: calc(100% + 20px);
+      height: calc(100% + 20px);
+      background: linear-gradient(
+        35deg,
+        $primary-color,
+        $third-color,
+        $secondary-color
+      );
+      filter: blur(5px);
+    }
+
+    &:hover::after {
+      animation: rotcirclegr 1s linear infinite;
+    }
+  }
+}
+
+@keyframes rotcirclegr {
+  to {
+    transform: rotate(360deg);
   }
 }
