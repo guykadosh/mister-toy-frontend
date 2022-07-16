@@ -19,7 +19,10 @@
         </div>
       </div>
       <div class="flex justify-end self-end">
-        <router-link class="btn-light" :to="'/toy/edit/' + toy._id"
+        <router-link
+          v-if="user.isAdmin"
+          class="btn-light"
+          :to="'/toy/edit/' + toy._id"
           >Edit</router-link
         >
         <button class="btn-dark mx-1" @click="goBack">go back</button>
@@ -38,14 +41,14 @@ export default {
       toy: null,
     }
   },
-  created() {
-    console.log('why like tihs?')
-    const { toyId } = this.$route.params
-    console.log(toyId)
-    toyService.getById(toyId).then(toy => {
-      console.log(toy)
+  async created() {
+    try {
+      const { toyId } = this.$route.params
+      const toy = await toyService.getById(toyId)
       this.toy = toy
-    })
+    } catch (err) {
+      console.error(err)
+    }
   },
   methods: {
     goBack() {
@@ -59,6 +62,9 @@ export default {
         dateStyle: 'full',
         timeStyle: 'short',
       }).format(date)
+    },
+    user() {
+      return this.$store.getters.loggedInUser
     },
   },
 }

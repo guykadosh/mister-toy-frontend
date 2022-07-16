@@ -43,7 +43,7 @@
       <p>Sort:</p>
       <a class="btn-dark-small m-1" @click="setSort('name')">Name</a>
       <a class="btn-dark-small m-1" @click="setSort('price')">Price</a>
-      <a class="btn-dark-small m-1" @click="setSort('date')">Date</a>
+      <a class="btn-dark-small m-1" @click="setSort('createdAt')">Date</a>
       <span>{{ desc === -1 ? '↓' : '↑' }}</span>
     </div>
   </section>

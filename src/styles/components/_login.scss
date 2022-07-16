@@ -1,0 +1,84 @@
+.login {
+  margin: 9.6rem auto;
+  width: 60rem;
+  border: 2px solid $primary-color;
+  border-radius: 9px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 2.4rem;
+  padding: 1.6rem;
+  background-color: $light-color1;
+  color: $primary-color;
+  transition: all 1s;
+
+  &__form {
+    margin-top: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+    width: 50rem;
+    align-items: center;
+  }
+
+  &__btn {
+    position: relative;
+    margin: auto;
+    padding: rem(12px) rem(18px);
+    transition: all 0.2s ease;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-family: 'Rubik', sans-serif;
+    margin-top: 0.8rem;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      border-radius: 50px;
+      background: $primary-color-light;
+      width: rem(45px);
+      height: rem(45px);
+      transition: all 0.3s ease;
+    }
+
+    span {
+      position: relative;
+      font-family: 'Ubuntu', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: $primary-color-dark;
+    }
+
+    svg {
+      position: relative;
+      top: 0;
+      margin-left: rem(10px);
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke: $primary-color-dark;
+      stroke-width: 2;
+      transform: translateX(-5px);
+      transition: all 0.3s ease;
+    }
+
+    &:hover:before {
+      width: 100%;
+      background: $primary-color-light;
+    }
+
+    &:hover svg {
+      transform: translateX(0);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+}

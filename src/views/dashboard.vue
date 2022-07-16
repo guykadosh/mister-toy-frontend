@@ -1,5 +1,5 @@
 <template>
-  <section v-if="labels" class="dashboard">
+  <section v-if="toys" class="dashboard">
     <h3>Average Price by type</h3>
     <chart :data="pricesData" />
     <h3>Stock by type</h3>
@@ -13,8 +13,8 @@ export default {
   components: {
     chart,
   },
-  created() {
-    this.$store.dispatch({ type: 'loadToys' })
+  async created() {
+    await this.$store.dispatch({ type: 'loadToys' })
   },
   computed: {
     toys() {

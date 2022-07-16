@@ -29,9 +29,11 @@
           </div>
 
           <div class="toy-preview__actions flex items-center justify-center">
-            <button @click="goToEdit">edit</button>
+            <button v-if="user.isAdmin" @click="goToEdit">edit</button>
             <button @click="goToDetail">details</button>
-            <button @click="removeToy(toy._id)">delete</button>
+            <button v-if="user.isAdmin" @click="removeToy(toy._id)">
+              delete
+            </button>
           </div>
         </div>
       </template>
@@ -62,6 +64,11 @@ export default {
     },
     removeToy(toyId) {
       this.$emit('removeToy', toyId)
+    },
+  },
+  computed: {
+    user() {
+      return this.$store.getters.loggedInUser
     },
   },
 }

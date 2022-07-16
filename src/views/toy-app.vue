@@ -1,5 +1,9 @@
 <template>
-  <section class="toy-app">
+  <section v-if="user && toys" class="toy-app">
+    <div class="user-info">
+      <p>Hello {{ user.fullname }}</p>
+      <button @click="logout" class="btn-dark-small">logout</button>
+    </div>
     <toy-filter
       @filteredTxt="debounceHandler"
       @filteredStatus="setFilterByStatus"
@@ -31,6 +35,7 @@ export default {
     }
   },
   created() {
+    if (!this.user) this.$router.push('/login')
     this.debounceHandler = _.debounce(this.setFilterByTxt, 500)
   },
   methods: {
@@ -58,10 +63,17 @@ export default {
       this.sortBy = sortBy
       this.loadToys()
     },
+    logout: async function () {
+      await this.$store.dispatch({ type: 'logout' })
+      this.$router.push('/login')
+    },
   },
   computed: {
     toys() {
       return this.$store.getters.toys
+    },
+    user() {
+      return this.$store.getters.loggedInUser
     },
   },
 }

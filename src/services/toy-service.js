@@ -1,6 +1,7 @@
 // import { storageService } from './storage-service.js'
 import { utilService } from './util-service.js'
-import axios from 'axios'
+import Axios from 'axios'
+const axios = Axios.create({ withCredentials: true })
 
 const KEY = 'toys_db'
 
@@ -57,20 +58,29 @@ function _getUrl(id = '') {
   return `${BASE_URL}/${id}`
 }
 
-function query(filterBy, sortBy) {
+async function query(filterBy, sortBy) {
   const query = { filterBy, sortBy }
-  return axios.get(_getUrl(), { params: query }).then(res => res.data)
+
+  const res = await axios.get(_getUrl(), { params: query })
+  return res.data
 }
 
-function getById(toyId) {
-  return axios.get(_getUrl(toyId)).then(res => res.data)
+async function getById(toyId) {
+  try {
+    const res = await axios.get(_getUrl(toyId))
+    return res.data
+  } catch (err) {
+    console.log(err)
+    throw new Error('Cannot load toy')
+  }
 }
 
-function remove(toyId) {
-  return axios.delete(_getUrl(toyId))
+async function remove(toyId) {
+  const res = axios.delete(_getUrl(toyId))
+  return res
 }
 
-function save(toy) {
+async function save(toy) {
   if (toy._id) {
     return axios.put(_getUrl(toy._id), toy).then(res => res.data)
   }

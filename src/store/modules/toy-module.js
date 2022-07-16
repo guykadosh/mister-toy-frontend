@@ -25,31 +25,46 @@ export default {
       state.toys.splice(idx, 1)
     },
     saveToy(state, { toy }) {
+      console.log(toy)
       const idx = state.toys.findIndex(currToy => currToy._id === toy._id)
       if (idx !== -1) state.toys.splice(idx, 1, toy)
       else state.toys.push(toy)
     },
   },
   actions: {
-    loadToys({ commit }, { filterBy, sortBy }) {
-      if (!filterBy) filterBy = { txt: '', status: '', labels: null }
-      if (!sortBy) sortBy = {}
+    loadToys: async ({ commit }, { filterBy, sortBy }) => {
+      try {
+        if (!filterBy) filterBy = { txt: '', status: '', labels: null }
+        if (!sortBy) sortBy = {}
 
-      toyService.query(filterBy, sortBy).then(toys => {
-        commit({ type: 'setToys', toys })
         const labels = toyService.getLabels()
         commit({ type: 'setLabels', labels })
-      })
+
+        const toys = await toyService.query(filterBy, sortBy)
+        commit({ type: 'setToys', toys })
+      } catch (err) {
+        console.log('Could not get toys')
+        // TODO: throw error to display user
+      }
     },
-    removeToy({ commit }, { id }) {
-      toyService.remove(id).then(() => {
+    removeToy: async ({ commit }, { id }) => {
+      try {
+        const res = await toyService.remove(id)
         commit({ type: 'removeToy', id })
-      })
+        return res
+      } catch (err) {
+        console.log('Could Not remove toy')
+        // TODO: throw error to display user
+      }
     },
-    saveToy({ commit }, { toy }) {
-      toyService.save(toy).then(toy => {
-        commit({ type: 'saveToy', toy })
-      })
+    saveToy: async ({ commit }, { toy }) => {
+      try {
+        const newToy = await toyService.save(toy)
+        commit({ type: 'saveToy', toy: newToy })
+      } catch (err) {
+        console.log('Could Not save toy')
+        // TODO: throw error to display user
+      }
     },
   },
 }

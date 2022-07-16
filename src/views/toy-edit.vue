@@ -40,7 +40,7 @@
         />
       </el-select>
       <div>
-        <button class="btn" @click="saveToy">save</button>
+        <button class="btn">save</button>
         <button class="btn-dark" @click="goBack">go back</button>
       </div>
     </form>
@@ -59,6 +59,8 @@ export default {
     }
   },
   created() {
+    if (!this.user || !this.user.isAdmin) this.$router.push('/toy')
+
     const { toyId } = this.$route.params
     if (toyId) {
       toyService.getById(toyId).then(toy => {
@@ -76,7 +78,6 @@ export default {
         this.selectedLabels.includes(label.title)
       )
       this.toyToEdit.labels = newLabels
-      console.log(this.toyToEdit)
       this.$store
         .dispatch({ type: 'saveToy', toy: this.toyToEdit })
         .then(() => {
@@ -87,6 +88,9 @@ export default {
   computed: {
     labels() {
       return this.$store.getters.labels
+    },
+    user() {
+      return this.$store.getters.loggedInUser
     },
   },
 }
