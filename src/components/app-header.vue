@@ -11,7 +11,10 @@
       <nav class="nav-bar">
         <ul class="nav-bar__links clean-list flex items-center justify-between">
           <li>
-            <router-link class="nav-bar__link flex items-center" to="/">
+            <router-link
+              class="nav-bar__link flex items-center justify-between"
+              to="/"
+            >
               <font-awesome-icon icon="fa-solid fa-house" />
               <span>Home</span>
             </router-link>

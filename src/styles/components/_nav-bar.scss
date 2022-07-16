@@ -12,10 +12,14 @@
       @include btn($bg: $third-color);
     }
     &:nth-child(3) a {
-      @include btn($bg: #f8cc2d);
+      @include btn($bg: $forth-color);
     }
     &:nth-child(4) a {
-      @include btn($bg: #fa5252);
+      @include btn($bg: $fifth-color);
+    }
+
+    span {
+      margin-inline-start: rem(8px);
     }
 
     &:hover {
